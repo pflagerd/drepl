@@ -1,33 +1,45 @@
 {
-    "name": "drepl",
-    "description": "A D interpreter.",
-    "copyright": "Copyright © 2014-2016, DREPL team",
-    "license": "BSL-1.0",
-    "authors": ["Martin Nowak"],
-    "lflags-linux-dmd": ["-l:libphobos2.so"],
-    "lflags-linux-ldc": ["-l:libphobos2-ldc-shared.so", "-l:libdruntime-ldc-shared.so"],
-    "lflags-linux": ["-ldl"],
-    "targetPath": "bin/",
-    "configurations": [
-        {
-            "name": "console",
-            "mainSourceFile": "src/console.d",
-            "dependencies": {
-                "linenoise": "~>1.1.0"
-            },
-            "targetType": "executable",
-            "subConfigurations": {
-                "linenoise": "vendored"
-            }
-        },
-        {
-            "name": "library",
-            "excludedSourceFiles": ["src/console.d"],
-            "targetType": "library",
-        },
-    ],
-    "dependencies": {
-        "colorize": "~>1.0.5",
-        "libdparse": "~>0.17.0"
-    },
+	"authors": [
+		"Martin Nowak"
+	],
+	"configurations": [
+		{
+			"dependencies": {
+				"linenoise": "~>1.1.0"
+			},
+			"mainSourceFile": "src/console.d",
+			"name": "console",
+			"subConfigurations": {
+				"linenoise": "vendored"
+			},
+			"targetType": "executable"
+		},
+		{
+			"excludedSourceFiles": [
+				"src/console.d"
+			],
+			"name": "library",
+			"targetType": "library"
+		}
+	],
+	"copyright": "Copyright © 2014-2016, DREPL team",
+	"dependencies": {
+		"colorize": "~>1.0.5",
+		"libdparse": "~>0.17.0",
+		"linenoise": "~>1.1.0"
+	},
+	"description": "A D interpreter.",
+	"lflags-linux": [
+		"-ldl"
+	],
+	"lflags-linux-dmd": [
+		"-l:libphobos2.so"
+	],
+	"lflags-linux-ldc": [
+		"-l:libphobos2-ldc-shared.so",
+		"-l:libdruntime-ldc-shared.so"
+	],
+	"license": "BSL-1.0",
+	"name": "drepl",
+	"targetPath": "bin/"
 }
